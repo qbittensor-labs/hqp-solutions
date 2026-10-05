@@ -96,6 +96,86 @@ were performed by AI (Claude) under qBitTensor Labs' direction, following the
 process used for the breaking-rsa-solutions release. Approved for release by
 qBitTensor Labs, 2026-09-06.
 
+### Level 3 — `level-3a` — added 2026-09-29
+
+Level 3 (challenge milestone `18065ddd-…`, difficulty 3, marked Complete
+2026-09-26) was won by **more than one submission**. This record covers the first
+solution published, `solutions/level-3a`; the second co-winner (`level-3b`) is
+recorded in the entry that follows.
+
+- **Artifact of record.** The `level-3a` package (submission `5a2754a9-…`, key
+  `5F48zgsH…XeRZ` — the Level 2 key) was retrieved directly from the platform
+  submission store via the admin review endpoints and relicensed from that
+  original. Accepted, 3/3 validation runs Success (our SN63 validator
+  `5EZ52JMq…7kR8`, which ran twice, and Rizzo `5GzjAcUc…dTs63`). 38 files.
+- **Attribution.** The submission names no author in its sources. The credited
+  handle **Charlie** is the competition-community (Discord) identity of the
+  winning key's owner, supplied by the operator. This provenance is the Discord
+  identity of the winning-key owner, **not** an in-source authorship header; it is
+  recorded as such and not represented as self-identification. The
+  `enigma_challenges/` package is qBitTensor Labs' own code and is credited to
+  qBitTensor Labs. Building on the published Level 1/2 solutions is expected under
+  the Enigma design and does not imply shared authorship.
+- **Custom/third-party split.** Every file was reviewed (38 files). All solver
+  sources are participant-original; the `enigma_challenges/` contract package is
+  qBitTensor Labs' own (relicensed to AGPL). The submission vendors no third-party
+  code — all dependencies are pip-installed from upstream at image-build time (see
+  `NOTICE.md`).
+- **Hygiene.** The tree was swept for secrets, credentials, endpoints, and embedded
+  local paths — clean (no platform endpoints, credentials, or presigned URLs). No
+  binaries. The Dockerfile is network-isolated at run time (network only at build
+  for pip installs) and runs non-root as `miner` under `/tmp`. All relicensed
+  Python re-parsed clean; file-set parity with the original verified.
+
+Performed by AI (Claude) under qBitTensor Labs' direction, following the same
+process. Approved for release by qBitTensor Labs, 2026-09-29.
+
+### Level 3 — `level-3b` — added on release
+
+This is the second Level 3 co-winner referenced above, published a week after
+`level-3a` once its on-chain payout transaction had been issued. Level 3 was won
+**twice**: two independent submissions, from two different keys, each passed all
+three required validation runs on the Level 3 circuits. This is a departure from
+the one-winner-per-milestone norm and resulted from a platform bug — a second
+full-pass submission was accepted for validation after the milestone had already
+been marked Complete, then auto-Rejected on status even though all three of its
+validation runs succeeded. Rather than discard a genuine solve, both are released
+as co-winners.
+
+- **Artifact of record.** The `level-3b` package (submission `a783ae7a-…`, key
+  `5HmQDNh8…rYmuqh` — a new key, distinct from every prior level) was retrieved
+  directly from the platform submission store via the admin review endpoints and
+  relicensed from that original. Status Rejected-but-3/3-Success (the milestone bug
+  above): all three validation runs Success — our SN63 validator (`5EZ52JMq…7kR8`,
+  which ran twice) and Rizzo (`5GzjAcUc…dTs63`). 62 files.
+- **Attribution.** The submission names no author in its sources. The credited
+  handle **Alexey** is the competition-community (Discord) identity of the winning
+  key's owner, supplied by the operator (the Discord profile reports the name
+  "Alexey Galda"; it is held to the handle "Alexey" here pending explicit consent
+  to publish a full legal name). This provenance is the Discord identity of the
+  winning-key owner, **not** an in-source authorship header, and is recorded as
+  such. The `enigma_challenges/` package is qBitTensor Labs' own code and is
+  credited to qBitTensor Labs.
+- **Custom/third-party split.** Every file was reviewed (62 files). All solver
+  sources are participant-original; the `enigma_challenges/` contract package is
+  qBitTensor Labs' own (relicensed to AGPL); the JSON schemas and `requirements.txt`
+  are original config/data (classified OTHER, copied verbatim, no header injected).
+  The submission vendors no third-party code — dependencies are pinned in
+  `requirements.txt` and installed from upstream at image-build time (see
+  `NOTICE.md`). The source was submitted under an `hqp_mpo/` package root; it was
+  flattened to the `level-3b/` directory so the tree matches the other levels and
+  the Dockerfile's build context is preserved.
+- **Hygiene.** The tree was swept for secrets, credentials, endpoints, and embedded
+  local paths — clean (the only URLs are build-time package indexes and JSON-schema
+  `$id` placeholders; no platform endpoints, credentials, or presigned URLs). No
+  real binaries (two empty marker files only). The Dockerfile is network-isolated
+  at run time (network only at build for pip/uv installs) and runs non-root as
+  `miner` under `/tmp`. All relicensed Python re-parsed clean; file-set parity with
+  the original verified.
+
+Performed by AI (Claude) under qBitTensor Labs' direction, following the same
+process. Approved for release by qBitTensor Labs on `level-3b` publication.
+
 **A note on best effort.** These solvers are user-submitted artifacts, preserved
 as judged. Classifying every line of third-party heritage in submissions we did
 not write is inherently best-effort; the participants' warranty (Rules §5.5)
