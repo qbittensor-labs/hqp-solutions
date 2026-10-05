@@ -22,12 +22,19 @@ what came before.
 |---|---|---|---|
 | 1 | matrix product state simulation driven by canonical beam search | anonymous participant | 2026-06-13 |
 | 2 | Level 1 approach + "unswap" technique (sheds bond dimension without destroying the peak) | anonymous participant | 2026-06-20 |
-| 3 | — open, $20,000 prize | — | — |
+| 3a | τ-block excision + concurrent D-measurement: excises the mirror blocks to turn a difficulty-3 circuit back into its difficulty-1 base, then finds the peak with the Level 1/2 MPS beam search | Charlie | 2026-09-26 |
+| 3b | structured-MPO engine: Gram-SVD compression with a bond-routing schedule and unswap, plus structural gadget / Pauli-marginal detection and two-sided checkpointing | Alexey | 2026-09-26 |
 
 The Level 2 winner started from the published Level 1 code and credits the
 Level 1 solution in its source comments. This is Enigma working as designed —
-winning solutions are open-sourced so each successor starts from the frontier —
-and the two levels were won by **different keys** (see `NOTICE.md`).
+winning solutions are open-sourced so each successor starts from the frontier.
+Levels 1 and 2 were won by different keys; Level 3a was submitted by the key that
+also won Level 2 (see `NOTICE.md`).
+
+**Level 3 has two winning solutions.** Two independent submissions, from different
+keys, each passed all three validation runs on the Level 3 circuits. They are
+preserved side by side as `level-3a/` (Charlie) and `level-3b/` (Alexey) — two
+distinct solvers, not a revision of one. Both are published as co-winners.
 
 ## Layout
 
@@ -35,6 +42,8 @@ and the two levels were won by **different keys** (see `NOTICE.md`).
 solutions/
   level-1/    # MPS + canonical beam search (anonymous participant)
   level-2/    # + unswap bond-dimension reduction (anonymous participant)
+  level-3a/   # τ-block excision + concurrent D-measurement (Charlie)
+  level-3b/   # structured-MPO engine: Gram-SVD + bond routing + unswap (Alexey)
 tools/
   relicense.py   # classifies custom vs vendored files; normalizes headers to AGPL-3.0
 docs/
@@ -119,7 +128,8 @@ network-isolated). Per-solution build and run instructions live in each
 
 ## Credit
 
-Both winning solvers were submitted by anonymous competition participants (the
-two levels were won by different keys — see [`NOTICE.md`](NOTICE.md) for the
-public winning-key record). The Level 2 solver builds on the published Level 1
-solution and credits it in its source.
+Levels 1 and 2 were submitted by anonymous competition participants; the Level 2
+solver builds on the published Level 1 solution and credits it in its source. The
+two Level 3 co-winners are credited to their competition handles — **Charlie**
+(`level-3a`) and **Alexey** (`level-3b`). See [`NOTICE.md`](NOTICE.md) for the
+public winning-key record and how these handles were established.

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/artifact-v1.schema.json",
+  "title": "Legacy or current experiment artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "id",
+    "role",
+    "media_type",
+    "preservation",
+    "source"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "artifact"},
+    "id": {"type": "string", "pattern": "^artifact\\.[a-z0-9._-]+$"},
+    "role": {
+      "enum": [
+        "raw_log",
+        "machine_result",
+        "plan",
+        "derived_dataset",
+        "narrative_claim",
+        "source_code"
+      ]
+    },
+    "media_type": {"type": "string", "minLength": 1},
+    "preservation": {
+      "enum": ["source_repository", "in_repository", "external", "missing"]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "path", "git_blob", "sha256"],
+      "properties": {
+        "repository": {"type": "string", "format": "uri"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "path": {"type": "string", "minLength": 1},
+        "git_blob": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "derived_from": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^artifact\\."},
+      "uniqueItems": true
+    },
+    "notes": {"type": "string"}
+  }
+}
