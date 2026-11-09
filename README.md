@@ -24,6 +24,7 @@ what came before.
 | 2 | Level 1 approach + "unswap" technique (sheds bond dimension without destroying the peak) | anonymous participant | 2026-06-20 |
 | 3a | τ-block excision + concurrent D-measurement: excises the mirror blocks to turn a difficulty-3 circuit back into its difficulty-1 base, then finds the peak with the Level 1/2 MPS beam search | Charlie | 2026-09-26 |
 | 3b | structured-MPO engine: Gram-SVD compression with a bond-routing schedule and unswap, plus structural gadget / Pauli-marginal detection and two-sided checkpointing | Alexey | 2026-09-26 |
+| 4 | SWAP-network matching + iterative excision portfolio: recovers the mirror permutation from CZ-triple geometry when the census finds no clean module, greedily excises a portfolio of candidate cuts (reusing the Level-3a engine, CPU-only), then reads the peak off the remainder with a vendored MPO solver | Alexey | 2026-10-14 |
 
 The Level 2 winner started from the published Level 1 code and credits the
 Level 1 solution in its source comments. This is Enigma working as designed —
@@ -36,6 +37,12 @@ keys, each passed all three validation runs on the Level 3 circuits. They are
 preserved side by side as `level-3a/` (Charlie) and `level-3b/` (Alexey) — two
 distinct solvers, not a revision of one. Both are published as co-winners.
 
+The Level 4 solver reuses the published Level-3a excision engine as its backend —
+the frontier compounding as intended — and is the first solution in this archive
+to **vendor** a third-party component: the `p9solver` MPO readout (Apache-2.0),
+Alexey's own public project. It was won by a key distinct from every prior level
+(see `NOTICE.md`).
+
 ## Layout
 
 ```
@@ -44,6 +51,10 @@ solutions/
   level-2/    # + unswap bond-dimension reduction (anonymous participant)
   level-3a/   # τ-block excision + concurrent D-measurement (Charlie)
   level-3b/   # structured-MPO engine: Gram-SVD + bond routing + unswap (Alexey)
+  level-4/    # SWAP-network matching + iterative excision portfolio (Alexey); CPU-only
+              #   reuses the level-3a engine (hqp4/winner/, Charlie) as its excision backend
+              #   p9solver/   — vendored MPO readout (Apache-2.0; see p9solver/VENDORED.md)
+              #   licenses/   — vendored third-party license texts
 tools/
   relicense.py   # classifies custom vs vendored files; normalizes headers to AGPL-3.0
 docs/
@@ -60,9 +71,11 @@ retains its own license and is **not** relicensed.
 
 Custom components are © qBitTensor Labs and released under **AGPL-3.0** (see
 [`LICENSE`](LICENSE)). Under the Enigma rules, winning submissions are AGPL-3.0 and
-the IP in custom components is assigned to qBitTensor Labs; neither solution vendors
-third-party code — dependencies are pip-installed from upstream at image-build
-time and retain their own licenses, summarized in [`NOTICE.md`](NOTICE.md).
+the IP in custom components is assigned to qBitTensor Labs. Most dependencies are
+pip-installed from upstream at image-build time and retain their own licenses; the
+one **vendored** third-party component — `level-4/p9solver/` (Apache-2.0) — is kept
+under its original license and is **not** relicensed. All of this is summarized in
+[`NOTICE.md`](NOTICE.md).
 
 ### Commercial licensing
 
@@ -131,5 +144,6 @@ network-isolated). Per-solution build and run instructions live in each
 Levels 1 and 2 were submitted by anonymous competition participants; the Level 2
 solver builds on the published Level 1 solution and credits it in its source. The
 two Level 3 co-winners are credited to their competition handles — **Charlie**
-(`level-3a`) and **Alexey** (`level-3b`). See [`NOTICE.md`](NOTICE.md) for the
-public winning-key record and how these handles were established.
+(`level-3a`) and **Alexey** (`level-3b`) — and Level 4 to **Alexey**, who reused
+Charlie's published Level-3a engine as its backend. See [`NOTICE.md`](NOTICE.md)
+for the public winning-key record and how these handles were established.
