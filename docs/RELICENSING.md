@@ -176,6 +176,75 @@ as co-winners.
 Performed by AI (Claude) under qBitTensor Labs' direction, following the same
 process. Approved for release by qBitTensor Labs on `level-3b` publication.
 
+### Level 4 — `level-4` — added 2026-10-29
+
+Level 4 (challenge milestone `d170b8c9-…`, difficulty 4, marked Complete
+2026-10-14) was won by **Alexey**. This is the first solution in the archive to
+**vendor** a third-party component, so the custom/third-party split required a
+manual step beyond the automated tool (below).
+
+- **Artifact of record.** The `level-4` package (submission
+  `b54b8920-…`, key `5FvHcFf…zuTz` — a new key, distinct from every prior level)
+  was retrieved directly from the platform submission store via the admin review
+  endpoints and relicensed from that original. Accepted, **5/5 required validation
+  runs Success** — our SN63 validator (`5EZ52JMq…7kR8`, which ran three times) and
+  Rizzo (`5GzjAcUc…dTs63`, twice). The platform's canonical winning-solution export
+  for the milestone was retrieved separately and is **byte-for-byte identical** to
+  the admin-downloaded submission. 66 files published.
+- **A second full-pass submission exists.** A different key (`5F48zgsH…XeRZ`, the
+  Level-2 / Level-3a key) also submitted a Level-4 solver that passed all five
+  validation runs, but it finished validating ~4 minutes **after** the milestone
+  had already been marked Complete, so it is not the platform's recorded winner.
+  Unlike the Level-3 co-winner case, only the recorded winning submission is
+  published here, at the operator's direction.
+- **Attribution.** The submission names no author in its sources. The credited
+  handle **Alexey** is the competition-community (Discord) identity of the winning
+  key's owner, supplied by the operator — the same handle credited for `level-3b`,
+  under a different key (one competitor may hold more than one key). It is held to
+  the handle "Alexey" pending explicit consent to publish a full legal name; the
+  fact that the vendored `p9solver` originates from the public `alexgalda-m`
+  account is corroborating, not a published legal-name identification. This
+  provenance is the Discord identity of the winning-key owner, **not** an in-source
+  authorship header, and is recorded as such. The `enigma_challenges/` package is
+  qBitTensor Labs' own code and is credited to qBitTensor Labs.
+- **Custom/third-party split.** Every file was reviewed. The solver's own route
+  (`hqp4/solve3.py`, `hqp4/swapnet_solve.py`, `hqp4/census_x.py`,
+  `hqp4/mkred_multi.py`, the `hqp4/l3/` de-obfuscation tools, `hardening_quantum_proof.py`,
+  `Dockerfile`) is participant-original and relicensed to AGPL. The `hqp4/winner/`
+  subtree (32 files) is the **published Level-3a solver (Charlie)**, carried with
+  CPU patches; qBitTensor Labs owns it under the Enigma rules, so it is relicensed
+  to AGPL alongside the rest — building on a published winner is expected under the
+  Enigma design and does not imply shared authorship. The `enigma_challenges/`
+  contract package is qBitTensor Labs' own (relicensed to AGPL). **One vendored
+  third-party component**, `p9solver/` (MPO + unswap readout), is Alexey's public
+  Apache-2.0 project `peaked-mpo-solver` (commit `47c8057`, with local changes
+  documented in `p9solver/VENDORED.md`). Because `p9solver/` is not under a
+  `vendor/`, `licenses/`, or `third_party/` path, `tools/relicense.py` does not
+  auto-classify it as third-party; it was therefore **restored verbatim from the
+  original after the tool ran**, so none of its files carry an injected AGPL header
+  (verified: no AGPL text anywhere under `p9solver/`). Its Apache-2.0 license is
+  surfaced under `licenses/LICENSE.p9solver-Apache-2.0.txt` per policy §2, in
+  addition to the `p9solver/LICENSE` that ships with the vendored package.
+- **Structure.** The submission shipped under an `hqp4_solver/` package root; it was
+  flattened to the `level-4/` directory so the tree matches the other levels and the
+  Dockerfile's build context is preserved. The submission's own root `NOTICE.md` and
+  a bundled full copy of the AGPL text were removed (the repository root `LICENSE`
+  and `NOTICE.md` cover both, as for `level-3a`/`level-3b`); their content is folded
+  into the root `NOTICE.md` and this record.
+- **Hygiene.** The tree was swept for secrets, credentials, endpoints, and embedded
+  local paths. No secrets, credentials, platform endpoints, or presigned URLs (the
+  only external URL is the `uv` installer fetched at build time; a `SOURCE_SHA`
+  constant is a source-integrity hash, not a secret). Several descriptive docstrings
+  reference the author's local development paths and internal codenames (e.g.
+  `research/priv/…`, `level4/sources/…`, `attic/portal/…`, "peakpilot"); these carry
+  no secrets or endpoints and are left intact as the artifact of record. No binaries.
+  The Dockerfile is network-isolated at run time (network only at build for uv/pip
+  installs) and runs non-root as `miner` under `/tmp`. All relicensed Python
+  re-parsed clean; file-set parity with the original verified.
+
+Performed by AI (Claude) under qBitTensor Labs' direction, following the same
+process. Approved for release by qBitTensor Labs on `level-4` publication.
+
 **A note on best effort.** These solvers are user-submitted artifacts, preserved
 as judged. Classifying every line of third-party heritage in submissions we did
 not write is inherently best-effort; the participants' warranty (Rules §5.5)

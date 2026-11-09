@@ -1,0 +1,30 @@
+[project]
+name = "p9solver"
+version = "0.1.0"
+description = "CPU-oriented solver for the P9 peaked-circuit benchmark"
+license = {text = "Apache-2.0"}
+readme = "VENDORED.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "cotengra==0.7.5",
+    "numba==0.65.0",
+    "numpy==2.2.6",
+    "qiskit==1.4.5",
+    "qiskit-quimb==0.0.10",
+    "quimb==1.11.2",
+    "rich>=13.7",
+    "scipy==1.15.3",
+]
+
+[project.optional-dependencies]
+diagnostics = ["matplotlib>=3.8"]
+
+[project.scripts]
+p9solve = "p9solver.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8"]
